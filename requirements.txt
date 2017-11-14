@@ -11,3 +11,4 @@ nnabla
 spacy
 sumy
 mecab-python3
+seaborn
