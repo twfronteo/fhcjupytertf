@@ -1,0 +1,13 @@
+xlrd
+pymc3
+theano
+chainer
+cupy
+edward
+gensim
+keras
+networkx
+nnabla
+spacy
+sumy
+mecab-python3
