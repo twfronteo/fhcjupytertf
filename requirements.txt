@@ -12,3 +12,6 @@ spacy
 sumy
 mecab-python3
 seaborn
+mojimoji
+python-louvain
+nltk
