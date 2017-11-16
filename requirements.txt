@@ -1,4 +1,5 @@
 xlrd
+jupyter-tensorboard
 pymc3
 theano
 chainer
