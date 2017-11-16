@@ -7,29 +7,28 @@ ADD requirements.txt /notebooks
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y python-dev \
+                       wget \
+                       libboost-all-dev \
                        mecab \ 
-		       libmecab-dev \
-		       mecab-ipadic \
-		       mecab-ipadic-utf8 \
-    		       python-mecab && \
+               libmecab-dev \
+               mecab-ipadic \
+               mecab-ipadic-utf8 \
+                   python-mecab && \
     apt-get clean
 
 ENV LANG C.UTF-8
-RUN python3 -m pip install -r requirements.txt
-RUN python3 -m spacy download en
-RUN python3 -m spacy download en_core_web_md
-RUN python3 -m nltk.downloader all
-RUN apt-get install -y wget \
-                       libboost-all-dev && \
-    mkdir /tmp/jumanpp && \
-    cd /tmp/jumanpp && \
+RUN python3 -m pip install -r requirements.txt && \
+    python3 -m spacy download en_core_web_md && \
+    python3 -m nltk.downloader all && \
+    mkdir /tmp/forjumanpp && \
+    cd /tmp/forjumanpp && \
     wget http://lotus.kuee.kyoto-u.ac.jp/nl-resource/jumanpp/jumanpp-1.02.tar.xz && \
     tar xJvf jumanpp-1.02.tar.xz && \
     cd jumanpp-1.02 && \
     ./configure && \
     make && \
-    make install
-RUN mkdir /tmp/juman && \
+    make install && \
+    cd .. && \
     wget http://nlp.ist.i.kyoto-u.ac.jp/nl-resource/juman/juman-7.01.tar.bz2 && \
     tar jxvf juman-7.01.tar.bz2 && \
     cd juman-7.01 && \
@@ -37,17 +36,17 @@ RUN mkdir /tmp/juman && \
     make && \
     make install && \
     echo "include /usr/local/lib" >> /etc/ld.so.conf && \
-    ldconfig
-RUN mkdir /tmp/knp && \
+    ldconfig && \
+    cd .. && \
     wget http://nlp.ist.i.kyoto-u.ac.jp/nl-resource/knp/knp-4.18.tar.bz2 && \
     tar jxvf knp-4.18.tar.bz2 && \
     cd knp-4.18 && \
     ./configure && \
     make && \
-    make install
-RUN mkdir /tmp/pyknp && \
-    cd /tmp/pyknp && \
+    make install && \
+    cd .. && \
     wget http://nlp.ist.i.kyoto-u.ac.jp/nl-resource/knp/pyknp-0.3.tar.gz && \
     tar xvf pyknp-0.3.tar.gz && \
     cd pyknp-0.3 && \
-    python3 setup.py install
+    python3 setup.py install && \
+    rm -rf /tmp/forjumanpp
