@@ -16,7 +16,8 @@ RUN apt-get update && \
                        python-mecab \
                        cmake \
                        check \
-                       cython && \
+                       cython \
+                       git && \
     apt-get clean
 
 ENV LANG C.UTF-8
