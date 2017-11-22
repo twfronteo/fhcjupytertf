@@ -10,10 +10,15 @@ RUN apt-get update && \
                        wget \
                        libboost-all-dev \
                        mecab \ 
-               libmecab-dev \
-               mecab-ipadic \
-               mecab-ipadic-utf8 \
-                   python-mecab && \
+                       libmecab-dev \
+                       mecab-ipadic \
+                       mecab-ipadic-utf8 \
+                       python-mecab \
+                       cmake \
+                       check \
+                       mako \
+                       cython \
+                       nosetests && \
     apt-get clean
 
 ENV LANG C.UTF-8
@@ -50,3 +55,17 @@ RUN python3 -m pip install -r requirements.txt && \
     cd pyknp-0.3 && \
     python3 setup.py install && \
     rm -rf /tmp/forjumanpp
+RUN mkdir /tmp/pygpu && \
+    cd /tmp/pygpu && \
+    git clone https://github.com/Theano/libgpuarray.git && \
+    cd libgpuarray && \
+    mkdir Build && \
+    cd Build && \
+    cmake .. -DCMAKE_BUILD_TYPE=Release && \
+    make && \
+    make install && \
+    cd .. && \
+    python3 setup.py build && \
+    python3 setup.py install && \
+    ldconfig && \
+    rm -rf /tmp/pygpu
