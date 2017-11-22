@@ -22,8 +22,9 @@ RUN apt-get update && \
 ENV LANG C.UTF-8
 RUN python3 -m pip install -r requirements.txt && \
     python3 -m spacy download en_core_web_md && \
-    python3 -m nltk.downloader all && \
-    mkdir /tmp/forjumanpp && \
+    python3 -m nltk.downloader all
+
+RUN mkdir /tmp/forjumanpp && \
     cd /tmp/forjumanpp && \
     wget http://lotus.kuee.kyoto-u.ac.jp/nl-resource/jumanpp/jumanpp-1.02.tar.xz && \
     tar xJvf jumanpp-1.02.tar.xz && \
@@ -53,6 +54,7 @@ RUN python3 -m pip install -r requirements.txt && \
     cd pyknp-0.3 && \
     python3 setup.py install && \
     rm -rf /tmp/forjumanpp
+
 RUN mkdir /tmp/pygpu && \
     cd /tmp/pygpu && \
     git clone https://github.com/Theano/libgpuarray.git && \
@@ -67,4 +69,5 @@ RUN mkdir /tmp/pygpu && \
     python3 setup.py install && \
     ldconfig && \
     rm -rf /tmp/pygpu
+
 RUN echo -e "\n[global]\nfloatX=float32\ndevice=cuda0\n\n[lib]\ncnmem=0.95\n" >> /root/.theanorc

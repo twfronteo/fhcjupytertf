@@ -5,7 +5,7 @@ Jinja2 >= 2.10
 xlrd
 jupyter-tensorboard
 pymc3
-theano 1.0.0
+theano >= 1.0.0
 chainer >= 3.1.0
 cupy >= 2.1.0
 edward
