@@ -69,3 +69,4 @@ RUN mkdir /tmp/pygpu && \
     python3 setup.py install && \
     ldconfig && \
     rm -rf /tmp/pygpu
+RUN echo -e "\n[global]\nfloatX=float32\ndevice=cuda0\n\n[lib]\ncnmem=0.95\n" >> /root/.theanorc
