@@ -16,9 +16,7 @@ RUN apt-get update && \
                        python-mecab \
                        cmake \
                        check \
-                       mako \
-                       cython \
-                       nosetests && \
+                       cython && \
     apt-get clean
 
 ENV LANG C.UTF-8
