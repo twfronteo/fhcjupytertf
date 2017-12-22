@@ -75,3 +75,5 @@ RUN mkdir /tmp/pygpu && \
     rm -rf /tmp/pygpu
 
 RUN echo "\n[global]\nfloatX=float32\ndevice=cuda0\n\n[lib]\ncnmem=0.95\n" >> /root/.theanorc
+
+ADD fonts/. /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/fonts/ttf/
