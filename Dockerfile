@@ -23,9 +23,7 @@ RUN apt-get update && \
 ENV LANG C.UTF-8
 RUN python3 -m pip install -r requirements.txt && \
     python3 -m spacy download en_core_web_md && \
-    python3 -m nltk.downloader all && \
-    python3 -m pip install http://download.pytorch.org/whl/cu90/torch-0.3.0.post4-cp35-cp35m-linux_x86_64.whl && \
-    python3 -m pip install torchvision
+    python3 -m nltk.downloader all
 
 
 RUN mkdir /tmp/forjumanpp && \
