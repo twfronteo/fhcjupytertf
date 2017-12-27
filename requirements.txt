@@ -13,7 +13,7 @@ gensim
 keras
 networkx
 nnabla
-spacy
+spacy == 1.9.0
 sumy
 mecab-python3
 seaborn
