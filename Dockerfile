@@ -4,7 +4,9 @@ WORKDIR "/notebooks"
 
 ADD requirements.txt /notebooks
 
-RUN apt-get update && \
+RUN chown root:root /tmp && \
+    chmod 1777 /tmp && \
+    apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y python-dev \
                        wget \
