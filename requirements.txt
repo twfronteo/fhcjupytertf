@@ -20,3 +20,4 @@ mojimoji
 python-louvain
 nltk
 tinysegmenter
+imbalanced-learn
