@@ -1,4 +1,4 @@
-FROM gcr.io/tensorflow/tensorflow:latest-gpu-py3
+FROM gcr.io/tensorflow/tensorflow:1.5.0-gpu-py3
 
 WORKDIR "/notebooks"
 
