@@ -19,6 +19,8 @@ RUN chown root:root /tmp && \
                        cmake \
                        check \
                        cython \
+                       cuda \
+                       cuda-drivers \
                        git && \
     apt-get clean
 
