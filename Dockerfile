@@ -75,7 +75,7 @@ RUN mkdir /tmp/pygpu && \
     rm -rf /tmp/pygpu
 
 RUN mkdir /tmp/pubmed_parser && \
-    cd /tmp/pubmed_parse && \
+    cd /tmp/pubmed_parser && \
     git clone https://github.com/titipata/pubmed_parser && \
     cd pubmed_parser && \
     python3 -m pip install -r requirements.txt && \
