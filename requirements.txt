@@ -7,7 +7,6 @@ jupyter-tensorboard
 pymc3
 theano >= 1.0.0
 chainer >= 3.4.0
-cupy >= 2.4.0
 edward
 gensim
 keras

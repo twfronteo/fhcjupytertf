@@ -19,8 +19,6 @@ RUN chown root:root /tmp && \
                        cmake \
                        check \
                        cython \
-                       cuda \
-                       cuda-drivers \
                        git && \
     apt-get clean
 
@@ -75,6 +73,13 @@ RUN mkdir /tmp/pygpu && \
     python3 setup.py install && \
     ldconfig && \
     rm -rf /tmp/pygpu
+
+RUN mkdir /tmp/pubmed_parser && \
+    cd /tmp/pubmed_parse && \
+    git clone https://github.com/titipata/pubmed_parser && \
+    cd pubmed_parser && \
+    python3 -m pip install -r requirements.txt && \
+    python3 setup.py install
 
 RUN echo "\n[global]\nfloatX=float32\ndevice=cuda0\n\n[lib]\ncnmem=0.95\n" >> /root/.theanorc
 
