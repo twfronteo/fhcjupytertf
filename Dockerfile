@@ -1,4 +1,4 @@
-FROM gcr.io/tensorflow/tensorflow:1.5.0-gpu-py3
+FROM gcr.io/tensorflow/tensorflow:1.6.0-gpu-py3
 
 WORKDIR "/notebooks"
 
@@ -48,9 +48,9 @@ RUN mkdir /tmp/forjumanpp && \
     echo "include /usr/local/lib" >> /etc/ld.so.conf && \
     ldconfig && \
     cd .. && \
-    wget http://nlp.ist.i.kyoto-u.ac.jp/nl-resource/knp/knp-4.18.tar.bz2 && \
-    tar jxvf knp-4.18.tar.bz2 && \
-    cd knp-4.18 && \
+    wget http://nlp.ist.i.kyoto-u.ac.jp/nl-resource/knp/knp-4.19.tar.bz2 && \
+    tar jxvf knp-4.19.tar.bz2 && \
+    cd knp-4.19 && \
     ./configure && \
     make && \
     make install && \
