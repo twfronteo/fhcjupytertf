@@ -3,7 +3,6 @@ bleach >= 2.1.1
 ftfy >= 5.1.1
 Jinja2 >= 2.10
 xlrd
-jupyter-tensorboard >= 0.1.6
 pymc3
 theano >= 1.0.0
 chainer >= 3.4.0
