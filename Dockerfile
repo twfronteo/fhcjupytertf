@@ -24,7 +24,8 @@ RUN chown root:root /tmp && \
     apt-get clean
 
 ENV LANG C.UTF-8
-RUN python3 -m pip install -r requirements.txt && \
+RUN python3 -m pip install --upgrade pip && \
+    python3 -m pip install -r requirements.txt && \
     python3 -m pip install --no-cache-dir spacy && \
     python3 -m spacy download en_core_web_md && \
     python3 -m nltk.downloader all
