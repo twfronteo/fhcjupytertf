@@ -19,6 +19,7 @@ RUN chown root:root /tmp && \
                        cmake \
                        check \
                        cython \
+                       python3-tk \
                        git && \
     apt-get clean
 
