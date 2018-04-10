@@ -1,4 +1,4 @@
-FROM gcr.io/tensorflow/tensorflow:1.7.0-rc0-gpu-py3
+FROM gcr.io/tensorflow/tensorflow:1.6.0-gpu-py3
 
 WORKDIR "/notebooks"
 
@@ -24,8 +24,7 @@ RUN chown root:root /tmp && \
     apt-get clean
 
 ENV LANG C.UTF-8
-RUN python3 -m pip install --upgrade pip && \
-    python3 -m pip install -r requirements.txt && \
+RUN python3 -m pip install -r requirements.txt && \
     python3 -m pip install --no-cache-dir spacy && \
     python3 -m spacy download en_core_web_md && \
     python3 -m nltk.downloader all
@@ -83,6 +82,6 @@ RUN mkdir /tmp/pubmed_parser && \
     python3 -m pip install -r requirements.txt && \
     python3 setup.py install
 
-RUN echo "\n[global]\nfloatX=float32\ndevice=cuda0\n\n[lib]\ncnmem=0.95\n" >> /root/.theanorc
+RUN echo "\n[global]\nfloatX=float32\ndevice=cuda1\n\n[lib]\ncnmem=0.95\n" >> /root/.theanorc
 
 ADD fonts/. /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/fonts/ttf/
