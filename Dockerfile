@@ -1,4 +1,4 @@
-FROM gcr.io/tensorflow/tensorflow:1.5.0-gpu-py3
+FROM gcr.io/tensorflow/tensorflow:1.7.0-rc0-gpu-py3
 
 WORKDIR "/notebooks"
 
@@ -85,3 +85,6 @@ RUN mkdir /tmp/pubmed_parser && \
 RUN echo "\n[global]\nfloatX=float32\ndevice=cuda0\n\n[lib]\ncnmem=0.95\n" >> /root/.theanorc
 
 ADD fonts/. /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/fonts/ttf/
+
+# Set up our notebook config.
+COPY jupyter_notebook_config.py /root/.jupyter/
