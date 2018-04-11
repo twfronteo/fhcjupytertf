@@ -20,3 +20,4 @@ nltk
 tinysegmenter
 imbalanced-learn
 node2vec
+flashtext
