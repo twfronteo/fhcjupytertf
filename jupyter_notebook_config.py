@@ -20,6 +20,7 @@ c.NotebookApp.ip = '*'
 c.NotebookApp.port = int(os.getenv('PORT', 8888))
 c.NotebookApp.open_browser = False
 c.NotebookApp.iopub_data_rate_limit=10000000000
+c.NotebookApp.server_extensions.append('ipyparallel.nbextension')
 
 # sets a password if PASSWORD is set in the environment
 if 'PASSWORD' in os.environ:
