@@ -22,3 +22,4 @@ imbalanced-learn
 node2vec
 flashtext
 ipyparallel
+tensorflow_hub
