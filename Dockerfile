@@ -82,6 +82,12 @@ RUN mkdir /tmp/pubmed_parser && \
     python3 -m pip install -r requirements.txt && \
     python3 setup.py install
 
+RUN mkdir /tmp/mecab-ipadic-neologd && \
+    cd /tmp/mecab-ipadic-neologd && \
+    git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git && \
+    cd mecab-ipadic-neologd && \
+    echo 'fhc' | ./bin/install-mecab-ipadic-neologd -u -n
+
 RUN echo "\n[global]\nfloatX=float32\ndevice=cuda0\n\n[lib]\ncnmem=0.95\n" >> /root/.theanorc
 
 ADD fonts/. /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/fonts/ttf/
