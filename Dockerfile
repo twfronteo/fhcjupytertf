@@ -88,6 +88,12 @@ RUN mkdir /tmp/mecab-ipadic-neologd && \
     cd mecab-ipadic-neologd && \
     echo 'yes' | ./bin/install-mecab-ipadic-neologd -u -n
 
+RUN mkdir /tmp/zhusuan && \
+    cd /tmp/zhusuan && \
+    git clone https://github.com/thu-ml/zhusuan.git && \
+    cd zhusuan && \
+    pip install .
+
 RUN echo "\n[global]\nfloatX=float32\ndevice=cuda0\n\n[lib]\ncnmem=0.95\n" >> /root/.theanorc
 
 ADD fonts/. /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/fonts/ttf/
