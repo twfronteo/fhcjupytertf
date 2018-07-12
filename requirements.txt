@@ -3,14 +3,10 @@ bleach >= 2.1.1
 ftfy >= 5.1.1
 Jinja2 >= 2.10
 xlrd
-pymc3
-theano >= 1.0.0
-chainer >= 3.4.0
 edward
 gensim
 keras
 networkx
-nnabla
 sumy
 mecab-python3
 seaborn
