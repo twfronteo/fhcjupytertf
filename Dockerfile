@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:1.9.0-gpu-py3
+FROM tensorflow/tensorflow:1.12.0-gpu-py3
 
 WORKDIR "/notebooks"
 
@@ -24,10 +24,8 @@ RUN chown root:root /tmp && \
     apt-get clean
 
 ENV LANG C.UTF-8
-RUN python3 -m pip install -r requirements.txt && \
-    python3 -m pip install --no-cache-dir spacy && \
-    python3 -m spacy download en_core_web_md && \
-    python3 -m nltk.downloader all
+RUN python3 -m pip install --upgrade setuptools pip
+RUN python3 -m pip install -r requirements.txt
 
 RUN mkdir /tmp/pubmed_parser && \
     cd /tmp/pubmed_parser && \
@@ -46,3 +44,9 @@ ADD fonts/. /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/fonts/ttf
 
 # Set up our notebook config.
 COPY jupyter_notebook_config.py /root/.jupyter/
+
+RUN jupyter-nbextension install rise --py --sys-prefix && \
+    jupyter nbextension enable rise --py --sys-prefix
+RUN python3 -m pip install jupyter-nbextensions-configurator && \
+    jupyter nbextensions_configurator enable --sys-prefix
+RUN jt -t chesterish
