@@ -2,6 +2,27 @@ FROM fronteo/fhcjupytertf:v0.5.5.1-1.7.1
 
 WORKDIR "/notebooks"
 
-ADD requirements.txt /notebooks
-RUN python3 -m pip install --upgrade setuptools pip
-RUN python3 -m pip install -r requirements.txt
+# Install some utilities
+RUN apt-get update && \
+    apt-get install -y -q wget git libxrender1 libsm6 bzip2 && \
+    apt-get clean
+
+# Install miniconda
+RUN MINICONDA="Miniconda3-latest-Linux-x86_64.sh" && \
+    wget --quiet https://repo.continuum.io/miniconda/$MINICONDA && \
+    bash $MINICONDA -b -p /miniconda && \
+    rm -f $MINICONDA
+ENV PATH /miniconda/bin:$PATH
+
+RUN conda update -n base conda
+RUN export LANG=en_US.UTF-8 && \
+    git clone https://github.com/deepchem/deepchem.git && \
+    cd deepchem && \
+    git checkout 2.1.0 && \
+    sed -i -- 's/tensorflow$/tensorflow-gpu/g' scripts/install_deepchem_conda.sh && \
+    bash scripts/install_deepchem_conda.sh && \
+    python setup.py develop
+
+# Clean up
+RUN cd deepchem && \
+    git clean -fX
