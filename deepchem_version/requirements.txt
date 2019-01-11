@@ -2,7 +2,6 @@ omnia
 pdbfixer == 1.4
 deepchem
 mdtraj == 1.9.1
-rdkit
 rdkit == 2017.09.1
 joblib == 0.11
 six == 1.11.0
