@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:1.12.0-gpu-py3
+FROM tensorflow/tensorflow:2.0.0a0-gpu-py3-jupyter
 
 WORKDIR "/notebooks"
 
@@ -44,9 +44,3 @@ ADD fonts/. /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/fonts/ttf
 
 # Set up our notebook config.
 COPY jupyter_notebook_config.py /root/.jupyter/
-
-RUN jupyter-nbextension install rise --py --sys-prefix && \
-    jupyter nbextension enable rise --py --sys-prefix
-RUN python3 -m pip install jupyter-nbextensions-configurator && \
-    jupyter nbextensions_configurator enable --sys-prefix
-RUN jt -t chesterish
