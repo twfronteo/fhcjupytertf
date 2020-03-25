@@ -23,3 +23,7 @@ node2vec
 flashtext
 ipyparallel
 tensorflow_hub
+plotly
+pymongo
+hdbscan
+umap-learn
