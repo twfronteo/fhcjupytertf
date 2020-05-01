@@ -1,0 +1,25 @@
+bleach >= 2.1.1
+ftfy >= 5.1.1
+Jinja2 >= 2.10
+xlrd
+edward
+gensim
+keras
+networkx
+sumy
+seaborn
+mojimoji
+python-louvain
+nltk
+tinysegmenter
+imbalanced-learn
+node2vec
+flashtext
+ipyparallel
+tensorflow_hub
+RISE
+jupyterthemes
+pymongo
+biopython
+hdbscan
+modin
