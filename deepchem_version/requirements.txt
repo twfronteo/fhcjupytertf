@@ -20,4 +20,4 @@ pbr == 3.1.1
 setuptools == 39.0.1
 biopython == 1.71
 numpy == 1.14
-tensorflow == 1.6.0
+tensorflow == 2.5.3
